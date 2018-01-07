@@ -1,0 +1,6 @@
+Colocarse dentro de carpeta donde está el repositorio con GIT Bash
+
+# git add .
+# git commit -m "comentario de nuevo commit"
+# git remote add origin http://github.com/kevin00osorio/js-test.git
+# git push -u origin master --force

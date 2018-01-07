@@ -1,0 +1,227 @@
+<html>
+
+<title>TMO</title>
+
+<head>
+</head>
+
+
+<body>
+<p align="right"> Creado por Kevin Osorio </p>
+<h1 align="center">Bitácora de TMO</h1>
+  <div id="div_Datos">
+    <form id="frm_Datos">
+      Horas
+      <input type="number" value="0" id="txt_Horas">
+      Minutos
+      <input type="number" value="5" id="txt_Minutos">
+      Segundos
+      <input type="number" value="10" id="txt_Segundos">
+      <input type="button" value="Agregar" id="btn_Agregar" onclick="agregar_Llamada()">
+    </form>
+  </div>
+  <div id="div_Listado" align="center" >
+    <h3 id="h3_Promedio" align="center">Promedio 0 Segundos</h3>
+    <table id="tbl_Llamadas" >
+      <thead>
+      <tr>
+              <td>
+                N°
+              </td>
+              <td>
+              Tiempo
+              </td>
+              <td>
+                Total (s)
+              </td>
+            </tr>
+          </thead>
+    </table>
+  </div>
+  <script type="text/javascript">
+
+// Varibles globales ________________________________
+
+  var array_llamadas=new Array();
+  //array_llamadas[0]=[0,1,2];
+
+//________________________________
+
+
+function agregar_Llamada()
+{
+  var horas=0, minutos=0, segundos=0;
+
+  //Validando que input tengan algún dígito, de lo contrario asignar el valor de cero
+  if(document.getElementById("txt_Horas").value.length!=0)
+    {
+      horas=parseInt(document.getElementById("txt_Horas").value);
+    }
+  if(document.getElementById("txt_Minutos").value.length!=0)
+    {
+      minutos=parseInt(document.getElementById("txt_Minutos").value);
+    }
+  if(document.getElementById("txt_Segundos").value.length!=0)
+  {
+    segundos=parseInt(document.getElementById("txt_Segundos").value);
+  }
+  agregarFilaArray(horas,minutos,segundos);
+  llenarTabla();
+  actualizarPromedioEnHTML();
+}
+
+
+//obtiene la longitud del array
+function obtenerLongitudArray()
+{
+  return parseInt(array_llamadas.length);
+}
+//agrega una fila al array
+function agregarFilaArray(hora, minuto, segundo)
+{
+  array_llamadas[obtenerLongitudArray()]=[0,0,0];
+  array_llamadas[obtenerLongitudArray()-1][0]=hora;
+  array_llamadas[obtenerLongitudArray()-1][1]=minuto;
+  array_llamadas[obtenerLongitudArray()-1][2]=segundo;
+  array_llamadas[obtenerLongitudArray()-1][3]=hora*60*60 + minuto *60 + segundo;
+
+}
+
+//elimina una fila al array
+function eliminarFilaArray(numeroFila)
+{
+  array_llamadas.splice(numeroFila-1,1);
+}
+
+//obtiene el promedio del array
+function promedioArray()
+{
+  var promedio=0;
+  for(var j=0; j<obtenerLongitudArray(); j++)
+  {
+    promedio+=array_llamadas[j][3];
+  }
+  promedio=promedio/obtenerLongitudArray();
+  return promedio;
+}
+
+
+//muestra con alert cada posición del array
+function mostrarAlertArray()
+{
+
+  for(var i=0;i<obtenerLongitudArray(); i++)
+  {
+    for(var j=0; j<=3; j++)
+    {
+      alert(array_llamadas[i][j]);
+    }
+  }
+
+}
+function unirFilaEnFormatoHora(numeroFila)
+{
+    return array_llamadas[numeroFila-1][0]+':'+array_llamadas[numeroFila-1][1]+':'+array_llamadas[numeroFila-1][2];
+}
+
+function obtenerTotalLLamada(numeroFila)
+{
+  return array_llamadas[numeroFila-1][3];
+}
+
+var tablaSindatos =document.createElement("tbl_Llamadas");
+function crearTablaVacia()
+{
+  var div_Listado = document.getElementById("div_Listado");
+tablaSindatos =document.createElement("table");
+tablaSindatos.id="tablaSindatos";
+var thead = document.createElement("thead");
+var tr = document.createElement("tr");
+var celda = document.createElement("td");
+var textoCelda = document.createTextNode("N°");
+celda.appendChild(textoCelda);
+tr.appendChild(celda);
+
+celda = document.createElement("td");
+var textoCelda = document.createTextNode("Tiempo");
+celda.appendChild(textoCelda);
+tr.appendChild(celda);
+
+celda = document.createElement("td");
+var textoCelda = document.createTextNode("Segundos");
+celda.appendChild(textoCelda);
+tr.appendChild(celda);
+
+thead.appendChild(tr);
+tablaSindatos.appendChild(thead);
+
+}
+function llenarTabla(){
+  crearTablaVacia();
+  var div_Listado = document.getElementById("div_Listado");
+  var tabla=document.getElementById("tbl_Llamadas");
+  div_Listado.removeChild(tabla);
+  tabla=tablaSindatos;
+  tabla.id="tbl_Llamadas";
+  div_Listado.appendChild(tabla);
+  var tblBody = document.createElement("tbody");
+  var tr = document.createElement("tr");
+  for(var i=0;i<obtenerLongitudArray();i++)
+  {
+
+    //le agrega identificador a la llamada dentro de la tabla en la primera columna
+    tr = document.createElement("tr");
+    var celda = document.createElement("td");
+    var textoCelda = document.createTextNode(i+1);
+    celda.appendChild(textoCelda);
+    tr.appendChild(celda);
+
+    //le agrega el tiempo en formato hora a la segunda columna de la tabla
+    celda = document.createElement("td");
+    textoCelda = document.createTextNode(unirFilaEnFormatoHora(i+1));
+    celda.appendChild(textoCelda);
+    tr.appendChild(celda);
+
+    //Le agrega el tiempo en segundos a la tercera columna en la tabla
+    celda = document.createElement("td");
+    textoCelda = document.createTextNode(obtenerTotalLLamada(i+1));
+    celda.appendChild(textoCelda);
+    tr.appendChild(celda);
+
+
+    //agregando botón para eliminar
+    celda = document.createElement("button");
+    celda.name="btn_eliminar_fila";
+    textoCelda = document.createTextNode("Eliminar :'(");
+
+    celda.onclick = function()
+      {
+        var tdd = this.parentNode;
+
+        //con ésto se obtiene la fila
+        //alert(tdd.cells[0].innerHTML);
+
+        eliminarFilaArray(tdd.cells[0].innerHTML);
+        promedioArray();
+        actualizarPromedioEnHTML();
+        llenarTabla();
+      }
+    celda.appendChild(textoCelda);
+    tr.appendChild(celda);
+    tblBody.appendChild(tr);
+
+  }
+
+  tblBody.appendChild(tr);
+  tabla.appendChild(tblBody);
+  div_Listado.appendChild(tabla);
+
+}
+
+function actualizarPromedioEnHTML()
+{
+  document.getElementById("h3_Promedio").innerText="Promedio "+promedioArray()+" segundos de "+obtenerLongitudArray()+" llamadas";
+}
+  </script>
+</body>
+</html>
