@@ -1,0 +1,135 @@
+ISO 12207 Procesos del ciclo de vida
+_______________________________________
+Adquisición:
+	Actividades y tareas que el comprador,
+	cliente o usuario realiza para adquirir un
+	sistema o producto software
+	
+Suministro
+	Actividades y tareas que efectúa el
+	suministrador. 
+	Proporciona un producto al cliente.
+	Desde que prepara presupuesto hasta que entrega software
+Desarrollo
+	• Captura de Requisitos
+	• Análisis de Requisitos del Sistema
+	• Diseño Arquitectónico del Sistema
+	• Análisis de los Requisitos del Software
+	• Diseño de la Arquitectura del Software
+	• Diseño del Software
+	• Construcción del Software
+	• Integración del Software
+	• Prueba del Software
+	• Integración del Sistema
+	• Prueba del Sistema
+	• Instalación del Software
+
+    Cascada:
+	Ingeniería y Análisis del Sistema
+	Análisis de Requisitos
+	Diseño
+	Codificación
+	Prueba
+	Mantenimiento
+    Prototipos:
+	Cuando el usuario no sabe lo que quiere
+    Modelo en V:
+	Test luego de cada proceso
+Explotación 
+	Incluye la operación del producto software
+	en su entorno final y el soporte operativo a
+	los clientes. Explotación de usuario y servicios de soporte.
+Mantenimiento
+	Incluye la modificación de un sistema o producto software
+	después de la entrega para:
+? 		Corregir los fallos (correctivo)
+? 		Mejorar el rendimiento u otros atributos (de mejora)
+?		Adaptarlo a un entorno modificado (adaptativo).
+		Esta modificación (o retirada) debe hacerse preservando
+		la integridad
+Procesos de Soporte
+________________________
+Proceso de Verificación: 
+	Confirmación de que todos los productos de trabajo 
+	y/o servicios software de un proceso o proyecto reflejan 
+	de forma apropiada los requisitos especificados.
+	¿Estamos construyendo correctamente el producto?
+Proceso de Validación: 
+	Sirve para determinar si el sistema o software final 
+	cumple con los requisitos previstos para su uso.
+? 	¿Estamos construyendo el producto correcto?
+Definiciones
+_________________________
+Error:
+	Acción humana que produce un resultado incorrecto
+	Ej.:Un error de programación ... Max=Min
+Defecto (falta o bug):
+	Desperfecto en un componente o sistema que puede causar que 
+	el componente o sistema falle en desempeñar las funciones 
+	requeridad.
+	Ej.: Una sentencia o una definición de datos incorrectas.
+Fallo:
+	Manifestación física o funcional de un defecto.
+	Ej.: Desviación de un componente o sistema respecto de la
+	presentación, servicio o resultado esperados.
+-Las pruebas pueden aportar fiabilidad a la calidad del software
+-El proceso de pruebas puede tener los siguientes objetivos:
+	Identificar defectos
+	Aumentar la confianza en el nivel de calidad
+	Facilitar información para la toma de decisiones (riesgo de
+	  lanzar el sistema en un momento dado)
+	Evitar la aparición de defectos
+-Pruebas dinámicas identifican fallos producidos por los defectos
+-El proceso de pruebas básico consta de siguientes 
+actividades principales (pueden realizarse en paralelo)
+	Planificación y control (definir objetivos, comparar progreso 		 real con previsto)
+	Análisis y diseño (objetivos se convierten en condiciones y 		 casos de pruebas)
+	Implementación y ejecución 
+	Evaluación de los criterios de salida e informes
+	Actividades de cierre de pruebas
+
+Modelo V:
+	Cuatro niveles que se utilizan
+	 Pruebas de componente (unidades):generalmente participa 
+	 el programador y se corrigen defectos en el momento
+	 Pruebas de integración: Prueba interfaces entre componentes
+ 	 interacciones con partes distintas, como SO, hardware, sistemas de archivos
+	 Pruebas de sistemas
+	 Pruebas de aceptación:Localizar defectos no es lo principal
+	 sino que evalúan la disposición de un sistema para su 
+	 despliegue y uso. Tiene pruebas de usuario, pruebas operativas
+	 (de aceptación) que incluyen backup/restauración, recuperación
+	 de desastres, gestión de usuarios, tarea de matenimiento, 
+	 carga de datos y tareas de migración, comprobaciones 
+	 periódicas de vulnerabilidades de seguridad.
+Pruebas funcionales (lo que hace el sistema)
+Pruebas no funcionales (cómo funciona el sistema):
+	-Pruebas de rendimiento
+	-Pruebas de carga
+	-Pruebas de estrés
+	-Pruebas de usabilidad
+	-Pruebas de mantenibilidad
+	-Pruebas de fiabilidad
+	-Pruebas de portabilidad
+Pruebas estructurales (caja blanca)
+	Se usa la medición de porcentaje de cobertura
+Pruebas de regresión: Prueba reiterada de un programa ya probado
+	después de haber sido modificado
+Depuración: Corrección de defectos, es una actividad de desarrollo, no una actividad de pruebas
+Pruebas de mantenimiento:
+	Planificación anticipada de versiones es vital. Se realizan 
+	en sistema operativo existente y se reactivan a partir de 		modificaciones o la retirada del software o del sistema.
+
+Técnicas dinámicas ejecutan software y las estáticas no, se basan en 
+	examen manuel (revisiones) y análisis automátizado del código
+	o documentación del proyecto. Localizan desviaciones de 
+	estándares, defectos de requisito, defectos de diseño,
+	mantenibilidad insuficiente y especificaciones  de interfaz
+	incorrectas
+
+Técnicas basadas en caja negra
+	Análisis de valores límites
+	Pruebas de tabla de decición
+	partición de equivalencia
+	Pruebas de transición de estado
+	Pruebas de caso de uso
